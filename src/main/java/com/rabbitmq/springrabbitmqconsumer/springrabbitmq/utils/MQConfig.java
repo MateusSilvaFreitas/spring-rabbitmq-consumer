@@ -1,4 +1,4 @@
-package com.rabbitmq.springrabbitmqconsumer;
+package com.rabbitmq.springrabbitmqconsumer.springrabbitmq.utils;
 
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.amqp.core.Binding;
@@ -15,18 +15,18 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class MQConfig {
 
-    public static final String MESSAGE_QUEUE = "message_queue";
-    public static final String MESSAGE_EXCHANGE = "message_exchange";
-    public static final String ROUTING_KEY = "message_routingKey";
+    public static final String EMAIL_QUEUE = "email_queue";
+    public static final String EXCHANGE = "exchange";
+    public static final String ROUTING_KEY = "rota_emails";
 
     @Bean
     public Queue queue(){
-        return new Queue(MESSAGE_QUEUE);
+        return new Queue(EMAIL_QUEUE);
     }
 
     @Bean
     public TopicExchange exchange(){
-        return new TopicExchange(MESSAGE_EXCHANGE);
+        return new TopicExchange(EXCHANGE);
     }
 
     @Bean
