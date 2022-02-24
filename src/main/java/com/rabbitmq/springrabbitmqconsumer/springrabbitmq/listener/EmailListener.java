@@ -9,7 +9,11 @@ import org.springframework.stereotype.Component;
 public class EmailListener {
 
     @RabbitListener(queues = MQConfig.EMAIL_QUEUE)
-    public void listenerEmails(EmailDTO customMessage){
-        System.out.println(customMessage);
+    public void listenerEmails(EmailDTO email){
+        System.out.println("========================");
+        System.out.println("Email → " + email.getAssunto());
+        System.out.println("Conteudo → " + email.getConteudo());
+        System.out.println("Destinatario → " + email.getDestinatario());
+        System.out.println("========================");
     }
 }

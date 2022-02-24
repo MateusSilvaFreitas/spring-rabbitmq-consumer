@@ -17,5 +17,5 @@ public class EmailDTO {
     private Date data;
     private String assunto;
     private String conteudo;
-    private List<String> destinatarios;
+    private String destinatario;
 }
