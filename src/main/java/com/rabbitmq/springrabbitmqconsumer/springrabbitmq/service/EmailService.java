@@ -14,7 +14,7 @@ public class EmailService {
 
     public boolean enviarEmail(EmailDTO email){
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("mateus.freitas7589@gmail.com");
+        message.setFrom("eduardobacananoreply@gmail.com");
         message.setTo(email.getDestinatario());
         message.setSubject(email.getAssunto());
         message.setText(email.getConteudo());
