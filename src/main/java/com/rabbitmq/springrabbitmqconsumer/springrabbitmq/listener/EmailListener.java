@@ -20,6 +20,6 @@ public class EmailListener {
         System.out.println("Conteudo → " + email.getConteudo());
         System.out.println("Destinatario → " + email.getDestinatario());
         System.out.println("========================");
-        boolean enviou = emailService.enviarEmail(email);
+        emailService.enviarEmail(email);
     }
 }

@@ -2,9 +2,11 @@ package com.rabbitmq.springrabbitmqconsumer.springrabbitmq.service;
 
 import com.rabbitmq.springrabbitmqconsumer.springrabbitmq.dto.EmailDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
+
+import javax.mail.internet.MimeMessage;
 
 @Service
 public class EmailService {
@@ -12,13 +14,20 @@ public class EmailService {
     @Autowired
     private JavaMailSender emailSender;
 
-    public boolean enviarEmail(EmailDTO email){
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("eduardobacananoreply@gmail.com");
-        message.setTo(email.getDestinatario());
-        message.setSubject(email.getAssunto());
-        message.setText(email.getConteudo());
-        emailSender.send(message);
-        return true;
+    public void enviarEmail(EmailDTO email) {
+
+        try {
+            MimeMessage mimeMessage = emailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, "utf-8");
+
+            helper.setText(email.getConteudo(), true);
+            helper.setTo(email.getDestinatario());
+            helper.setSubject(email.getAssunto());
+            helper.setFrom("eduardobacananoreply@gmail.com");
+
+            emailSender.send(mimeMessage);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }
