@@ -17,7 +17,7 @@ public class MQConfig {
 
     public static final String EMAIL_QUEUE = "email_queue";
     public static final String EXCHANGE = "exchange";
-    public static final String ROUTING_KEY = "rota_emails";
+    public static final String ROUTING_KEY = "email_route";
 
     @Bean
     public Queue queue(){
